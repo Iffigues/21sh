@@ -6,7 +6,7 @@
 /*   By: bordenoy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 12:12:36 by bordenoy          #+#    #+#             */
-/*   Updated: 2019/05/05 16:25:50 by bordenoy         ###   ########.fr       */
+/*   Updated: 2019/05/05 17:45:54 by bordenoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 # define DD			2117294875
 # define MODE		5921563
 # define CTRLD		4
+# define HOME       4741915
+# define END        4610843
+# define PU			3496731
+# define PD			3562267
 
 typedef struct	s_ligne
 {
