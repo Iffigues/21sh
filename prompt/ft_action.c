@@ -6,63 +6,57 @@
 /*   By: bordenoy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 12:49:04 by bordenoy          #+#    #+#             */
-/*   Updated: 2019/05/05 17:47:09 by bordenoy         ###   ########.fr       */
+/*   Updated: 2019/05/13 18:17:03 by bordenoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_21.h"
+#include "../include/ft_21.h"
 
-static int ft_d(t_prompt *ar, char c)
+static int	ft_not(t_prompt *a, unsigned long c)
 {
-	if (ar->i && c)
+	if (a && c)
 		;
-	ft_putstr("kjkj\n");
 	return (1);
 }
 
 static int ft_starter(t_prompt *ar, char c)
 {
 	int  i;
-	t_action b[3] = {
-		{CTRLD, ft_d},
-		{ENTER, ft_d},
-		{DEL, ft_d}
+	t_action b[4] = {
+		{CTRLD, ft_ctrld},
+		{ENTER, ft_enter},
+		{DEL, ft_del},
+		{TAB, ft_tab}
 	};
 
 	if (ar->i)
 		;
 	i = 0;
-	while (i < 3)
+	while (i < 4)
 		if (b[i++].d == c)
 			return (b[i - 1].ptf(ar, c));
 	return (0);
 }
 
-static int up(t_prompt *ar, unsigned long c)
-{
-	if (ar->i && c)
-		;
-	ft_putstr("hhhh\n");
-	return (1);
-}
-
 int	ft_seqence(t_prompt *ar, unsigned long  c)
 {
 	int i;
-
-	t_seq b[9] = {
-		{UP_KEY, up},
-		{DOWN_KEY, up},
-		{LEFT_KEY, up},
-		{RIGHT_KEY, up},
-		{DD, up},
-		{HOME, up},
-		{END, up},
-		{PU, up},
-		{PD, up}
+	t_seq b[11] = {
+		{UP_KEY, ft_up},
+		{DOWN_KEY, ft_down},
+		{LEFT_KEY, ft_left},
+		{RIGHT_KEY, ft_right},
+		{DD, ft_dd},
+		{HOME, ft_home},
+		{END, ft_end},
+		{PU, ft_pu},
+		{PD, ft_pd},
+		{NOT, ft_not},
+		{NIT, ft_not}
 	};
+
 	i = 0;
-	while (i < 9)
+	while (i < 11)
 		if (b[i++].d == c)
 			return (b[i - 1].ptf(ar, c));
 	return (0);
@@ -73,5 +67,5 @@ void ft_action(t_prompt *ar, char c)
 	if (ft_starter(ar, c))
 		;
 	else
-		ft_putstr("hahaha\n");
+		ft_alpha(ar, c);
 }

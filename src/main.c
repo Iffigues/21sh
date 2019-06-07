@@ -6,11 +6,14 @@
 /*   By: bordenoy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:29:49 by bordenoy          #+#    #+#             */
-/*   Updated: 2019/05/04 20:13:17 by bordenoy         ###   ########.fr       */
+/*   Updated: 2019/05/13 13:17:22 by bordenoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21.h"
+#include <stdio.h>
+
+t_data	*g_data;
 
 void init_env(t_env *c, char **env)
 {
@@ -27,13 +30,19 @@ void init_env(t_env *c, char **env)
 
 int main(int ac, char **av, char **env)
 {
-	t_env	c;
+	t_env		c;
+	t_prompt    ar;
+	t_data		r;
 
 	if (ac && av)
 		;
 	grab_sign();
 	init_env(&c, env);
+	init_prompt(&ar);
 	ft_set(0);
-	ft_prompt();
+	r.c = c;
+	r.t = ar;
+	g_data = &r;
+	ft_prompt(&g_data->t);
 	return (0);
 }

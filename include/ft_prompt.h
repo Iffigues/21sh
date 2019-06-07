@@ -6,7 +6,7 @@
 /*   By: bordenoy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 12:12:36 by bordenoy          #+#    #+#             */
-/*   Updated: 2019/05/05 17:45:54 by bordenoy         ###   ########.fr       */
+/*   Updated: 2019/05/13 13:16:56 by bordenoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define ESCAPE		8
 # define ENTER		10
+# define TAB		9
 # define ESC_KEY	27
 # define RIGHT_KEY	4414235
 # define LEFT_KEY	4479771
@@ -31,14 +32,15 @@
 # define END        4610843
 # define PU			3496731
 # define PD			3562267
+# define NOT		77194440301339
+# define NIT		79393463556891
+# define CEND		-5
 
-typedef struct	s_ligne
+# define kl			"kl"
+
+typedef struct s_esc
 {
-	int		type;
-	char	c;
-	struct	t_list	*prev;
-	struct	s_list	*next;
-}				t_ligne;
+}				t_esc;
 
 typedef struct	s_prompt
 {
@@ -47,7 +49,10 @@ typedef struct	s_prompt
 	size_t		read;
 	char		c[2];
 	char		p[ESCAPE];
-	t_ligne		*com;
+	size_t	 	pos;
+	size_t      oui;
+	size_t 		size;
+	char		*com;
 }				t_prompt;
 
 typedef struct s_seq
@@ -66,9 +71,25 @@ typedef struct s_action
 void ft_add(t_prompt *ar, char c);
 int	ft_escape(t_prompt *ar, char c);
 int ft_letter(t_prompt *ar, char c);
-void    ft_prompt(void);
+void    ft_prompt(t_prompt *ar);
 void    clean(t_prompt *v, int a);
 void ft_action(t_prompt *ar, char c);
 int ft_seqence(t_prompt *ar, unsigned long  c);
+int ft_ctrld(t_prompt *ar, char c);
+int ft_enter(t_prompt *ar, char c);
+int ft_del(t_prompt *ar, char c);
+int ft_dd(t_prompt *ar, unsigned long c);
+int ft_home(t_prompt *ar, unsigned long c);
+int ft_end(t_prompt *ar, unsigned long c);
+int ft_pu(t_prompt *ar, unsigned long c);
+int ft_pd(t_prompt *ar, unsigned long c);
+int ft_up(t_prompt *ar, unsigned long c);
+int ft_down(t_prompt *ar, unsigned long c);
+int ft_left(t_prompt *ar, unsigned long c);
+int ft_right(t_prompt *ar, unsigned long c);
+char	*make_cursor();
+void    ft_alpha(t_prompt *ac, char c);
+int    ft_tab(t_prompt *ac, char c);
+void init_prompt(t_prompt *ar);
 
 #endif

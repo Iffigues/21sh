@@ -1,32 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_21.h                                            :+:      :+:    :+:   */
+/*   ft_char.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bordenoy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/30 12:12:36 by bordenoy          #+#    #+#             */
-/*   Updated: 2019/05/13 12:59:40 by bordenoy         ###   ########.fr       */
+/*   Created: 2019/05/06 12:49:16 by bordenoy          #+#    #+#             */
+/*   Updated: 2019/05/13 19:12:15 by bordenoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_TWENTY_H
-# define FT_TWENTY_H
-# include "libft.h"
-# include "ft_env.h"
-# include "ft_prompt.h"
-# include "ft_signaux.h"
-# include "ft_jb.h"
-# include <termios.h>
-# include <term.h>
+#include "../include/ft_21.h"
 
-typedef struct	s_data
+int ft_ctrld(t_prompt *ar, char c)
 {
-	t_env		c;
-	t_prompt	t;
-}				t_data;
+	if (ar->i && c)
+		;
+	return (1);
+}
 
-void    ft_set(int i);
-void	ft_stati(t_data *h, int i);
+int ft_enter(t_prompt *ar, char c)
+{
+	char *cpy;
 
-#endif
+	if (ar->i && c)
+		;
+	if (ar->com)
+	{
+		cpy = ft_strdup(ar->com);
+		reset();
+		free(cpy);
+	}
+	return (1);
+}
+
+int ft_del(t_prompt *ar, char c)
+{
+	if (ar->i && c)
+		;
+	return (1);
+}
+int ft_tab(t_prompt *ar, char c)
+{
+	if (ar->i && c)
+		;
+	return (1);
+}

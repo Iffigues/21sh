@@ -6,16 +6,15 @@
 /*   By: bordenoy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 12:11:42 by bordenoy          #+#    #+#             */
-/*   Updated: 2019/05/05 17:46:30 by bordenoy         ###   ########.fr       */
+/*   Updated: 2019/05/13 17:42:34 by bordenoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_prompt.h"
-#include "stdio.h"
+#include "../include/ft_prompt.h"
 
 int	is_escape(unsigned long c)
 {
-	if (c == 23323 || c == 3365659)
+	if (c == 23323 || c == 3365659 || c == 3234587 || c == 993090331)
 		return (1);
 	return (0);
 }
@@ -26,9 +25,29 @@ int is_in(unsigned long m)
 		return (1);
 	if (RIGHT_KEY == m || HOME == m  || END == m || m == PD)
 		return (1);
-	if (m == PU)
+	if (m == PU || m== MODE)
+		return (1);
+	if (m == 77194440301339 || m == 79393463556891)
 		return (1);
 	return (0);
+}
+
+static void ft_vide(t_prompt *a)
+{
+	a->i = 0;
+	a->y = 0;
+	ft_memset(a->p,'\0', ESCAPE);
+	clean(a, 1);
+}
+
+static int notseq(t_prompt *a)
+{
+	if (a->y > 8)
+	{
+		ft_vide(a);
+		return (0);
+	}
+	return (1);
 }
 
 static int	is_in_escape(t_prompt *a, char c)
@@ -37,21 +56,13 @@ static int	is_in_escape(t_prompt *a, char c)
 
 	ft_add(a, c);
 	num = *(unsigned long *)a->p;
-	printf("%zu\n",num);
-	if (!(is_escape(num)) && is_in(num))
+	if ((!(is_escape(num)) && is_in(num)))
 	{
 		ft_seqence(a, num);
-		a->y = 0;
-		a->i = 0;
-		clean(a, 1);
+		ft_vide(a);
 	}
 	else if (!(is_escape(num)) && !(is_in(num)))
-	{
-		a->i = 0;
-		a->y = 0;
-		clean(a, 1);
-		return (0);
-	}
+		return (notseq(a));
 	return (1);
 }
 
@@ -75,14 +86,10 @@ int ft_letter(t_prompt *ar, char c)
 {
 	if (c == 27 )
 	{
-		if (ar->read == 1)
-		{
-		}
-		else
-		{	
-			ar->i = 1;
+		if (ar->read == 1 )
+			exit(0);
+		if (ar->read != 1 && (ar->i = 1))
 			ft_add(ar, c);
-		}
 	}
 	else
 		ft_action(ar, c);

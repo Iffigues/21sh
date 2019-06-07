@@ -6,19 +6,31 @@
 /*   By: bordenoy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 11:27:23 by bordenoy          #+#    #+#             */
-/*   Updated: 2019/05/04 20:14:14 by bordenoy         ###   ########.fr       */
+/*   Updated: 2019/05/13 15:28:01 by bordenoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_prompt.h"
+#include "../include/ft_21.h"
 
-static void	init_prompt(t_prompt *ar)
+char	*make_cursor()
+{
+	char *c;
+
+	if (!(c = (char *)malloc(sizeof(char) * (61))))
+		return (NULL);
+	*c = '\0';
+	return (c);
+}
+
+void	init_prompt(t_prompt *ar)
 {
 	ar->i = 0;
 	ar->y = 0;
 	ar->read = 0;
+	ar->oui = 0;
 	ft_memset(ar->p, 0, ESCAPE);
 	ar->com = NULL;
+	ar->pos = 0;
 	ft_memset(ar->c, 0, 2);
 }
 
@@ -47,14 +59,11 @@ static int 	ft_getchar(t_prompt *ar)
 	return (0);
 }
 
-void	ft_prompt(void)
+void	ft_prompt(t_prompt *ar)
 {
-	t_prompt	ar;
-
-	init_prompt(&ar);
-	while ((ar.read = read(0, ar.c, 2)))
+	while ((ar->read = read(1, ar->c, 2)))
 	{
-		ft_getchar(&ar);
-		clean(&ar, 0);
+		ft_getchar(ar);
+		clean(ar, 0);
 	}
 }
