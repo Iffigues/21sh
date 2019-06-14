@@ -32,6 +32,7 @@ int ft_left(t_prompt *ar, unsigned long c)
 		;
 	if (ar->oui)
 		ar->oui--;
+	tputs(tgetstr("le", NULL), 1, ft_charz);
 	return (1);
 }
 
@@ -42,5 +43,6 @@ int ft_right(t_prompt *ar, unsigned long c)
 		;
 	if (ar->oui < ft_strlen(ar->com))
 		ar->oui++;
+	tputs(tgetstr("nd", NULL), 1, ft_charz);
 	return (1);
 }

@@ -49,6 +49,7 @@ typedef struct	s_prompt
 	size_t		y;
 	size_t		read;
 	char		c[2];
+	char 		*cm_cap;
 	char		p[ESCAPE];
 	size_t      	oui;
 	size_t 		size;

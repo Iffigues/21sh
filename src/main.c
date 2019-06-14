@@ -41,6 +41,7 @@ int main(int ac, char **av, char **env)
 	init_env(&c, env);
 	init_prompt(&ar);
 	ft_set(0);
+	ar.cm_cap = tgetstr("cm", NULL);
 	r.c = c;
 	r.t = ar;
 	g_data = &r;
