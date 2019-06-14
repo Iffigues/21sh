@@ -85,10 +85,20 @@ static char  *add_middle(char *ac, char t, size_t c)
 	return (ac);
 }
 
-void aff(t_prompt *ac, char c) {
+void aff(t_prompt *ac, char c) 
+{
+	int i;
+	int cc;	
+
+	cc = ac->oui;
+	i = ft_strlen(ac->com);
 	if (ac->i)
 	;
 	ft_putchar(c);
+	while (cc < i) 
+	{
+		ft_putchar(ac->com[cc++]);
+	}
 }
 
 void	ft_alpha(t_prompt *ac, char c)
