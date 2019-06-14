@@ -107,4 +107,5 @@ void	ft_alpha(t_prompt *ac, char c)
 		ac->com = add_begin(ac->com, c);
 	else
 		ac->com = add_middle(ac->com, c, ac->oui);
+	aff(ac, c);
 }

@@ -13,6 +13,7 @@
 #ifndef FT_TWENTY_H
 # define FT_TWENTY_H
 # include "libft.h"
+# include <unistd.h>
 # include "ft_env.h"
 # include "ft_prompt.h"
 # include "ft_signaux.h"

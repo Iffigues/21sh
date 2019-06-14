@@ -14,6 +14,7 @@
 # define FT_PROMPT_H
 # include "libft.h"
 # include "ft_env.h"
+# include <unistd.h>
 
 # define ESCAPE		8
 # define ENTER		10
@@ -66,7 +67,7 @@ typedef struct s_action
 	int			(*ptf)(t_prompt *ar, char c);
 }				t_action;
 
-
+int	ft_charz(int a);
 void ft_add(t_prompt *ar, char c);
 int	ft_escape(t_prompt *ar, char c);
 int ft_letter(t_prompt *ar, char c);

@@ -12,6 +12,7 @@
 
 #include "ft_21.h"
 #include <stdio.h>
+#include <unistd.h>
 
 t_data	*g_data;
 
@@ -31,7 +32,7 @@ void init_env(t_env *c, char **env)
 int main(int ac, char **av, char **env)
 {
 	t_env		c;
-	t_prompt    ar;
+	t_prompt	ar;
 	t_data		r;
 
 	if (ac && av)
@@ -43,6 +44,7 @@ int main(int ac, char **av, char **env)
 	r.c = c;
 	r.t = ar;
 	g_data = &r;
+	tputs(tgetstr("vs", NULL), 1, ft_charz);
 	ft_prompt(&g_data->t);
 	return (0);
 }
