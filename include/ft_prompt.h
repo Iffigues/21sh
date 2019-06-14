@@ -15,6 +15,7 @@
 # include "libft.h"
 # include "ft_env.h"
 # include <unistd.h>
+# include <sys/ioctl.h>
 
 # define ESCAPE		8
 # define ENTER		10
@@ -53,6 +54,7 @@ typedef struct	s_prompt
 	char		p[ESCAPE];
 	size_t      	oui;
 	size_t 		size;
+	struct winsize	w;
 	char		*com;
 }				t_prompt;
 
