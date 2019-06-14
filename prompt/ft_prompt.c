@@ -30,7 +30,6 @@ void	init_prompt(t_prompt *ar)
 	ar->oui = 0;
 	ft_memset(ar->p, 0, ESCAPE);
 	ar->com = NULL;
-	ar->pos = 0;
 	ft_memset(ar->c, 0, 2);
 }
 

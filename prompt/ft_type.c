@@ -86,8 +86,6 @@ int ft_letter(t_prompt *ar, char c)
 {
 	if (c == 27 )
 	{
-		if (ar->read == 1 )
-			exit(0);
 		if (ar->read != 1 && (ar->i = 1))
 			ft_add(ar, c);
 	}

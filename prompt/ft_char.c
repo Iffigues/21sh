@@ -14,8 +14,8 @@
 
 int ft_ctrld(t_prompt *ar, char c)
 {
-	if (ar->i && c)
-		;
+	if ((ar->com  == NULL && ft_strlen(ar->com) == 0) ||  c)
+		exit(0);
 	return (1);
 }
 

@@ -85,6 +85,12 @@ static char  *add_middle(char *ac, char t, size_t c)
 	return (ac);
 }
 
+void aff(t_prompt *ac, char c) {
+	if (ac->i)
+	;
+	ft_putchar(c);
+}
+
 void	ft_alpha(t_prompt *ac, char c)
 {
 	size_t y;

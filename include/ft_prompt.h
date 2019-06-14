@@ -49,8 +49,7 @@ typedef struct	s_prompt
 	size_t		read;
 	char		c[2];
 	char		p[ESCAPE];
-	size_t	 	pos;
-	size_t      oui;
+	size_t      	oui;
 	size_t 		size;
 	char		*com;
 }				t_prompt;

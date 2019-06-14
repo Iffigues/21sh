@@ -19,7 +19,6 @@ void reset()
 {
 	g_data->t.y = 0;
 	g_data->t.i = 0;
-	g_data->t.pos = 0;
 	g_data->t.read = 0;
 	ft_memset(g_data->t.p,'\0', ESCAPE);
 	ft_memset(g_data->t.c, '\0', 2);
