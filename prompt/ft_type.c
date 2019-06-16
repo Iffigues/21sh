@@ -50,6 +50,7 @@ static int notseq(t_prompt *a)
 	return (1);
 }
 
+
 static int	is_in_escape(t_prompt *a, char c)
 {	
 	unsigned long num;

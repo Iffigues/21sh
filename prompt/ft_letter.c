@@ -85,18 +85,20 @@ static char  *add_middle(char *ac, char t, size_t c)
 	return (ac);
 }
 
-void aff(t_prompt *ac) 
+void aff(t_prompt *ac, char **c) 
 {
 	size_t i;
 	size_t cc;	
-	
-	cc = ac->oui;
+	if (c)	
+		;
+	ac->oui++;
+	cc = ac->oui - 1;
 	i = ft_strlen(ac->com);
+	if (ac->com &&i)
 	while (cc < i) 
 		ft_putchar(ac->com[cc++]);
-	while (--cc > ac->oui)
+	while (--cc > ac->oui - 1)
 		tputs(tgetstr("le", NULL), 1, ft_charz);
-	ac->oui++;
 }
 
 void	ft_alpha(t_prompt *ac, char c)
@@ -112,5 +114,5 @@ void	ft_alpha(t_prompt *ac, char c)
 		ac->com = add_begin(ac->com, c);
 	else
 		ac->com = add_middle(ac->com, c, ac->oui);
-	aff(ac);
+	aff(ac, ft_split(ac->com));
 }

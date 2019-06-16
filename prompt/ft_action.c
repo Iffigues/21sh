@@ -55,10 +55,10 @@ int	ft_seqence(t_prompt *ar, unsigned long  c)
 		{NIT, ft_not}
 	};
 
-	i = 0;
-	while (i < 11)
-		if (b[i++].d == c)
-			return (b[i - 1].ptf(ar, c));
+	i = -1;
+	while (i++ < 11)
+		if (b[i].d == c)
+			return (b[i].ptf(ar, c));
 	return (0);
 }
 

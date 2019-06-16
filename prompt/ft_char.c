@@ -25,12 +25,18 @@ int ft_enter(t_prompt *ar, char c)
 
 	if (ar->i && c)
 		;
-	if (ar->com)
+	if (ar->read == 1)
 	{
-		cpy = ft_strdup(ar->com);
-		reset();
-		free(cpy);
+		if(ar->com) 
+		{	
+			cpy = ft_strdup(ar->com);
+			reset();
+			free(cpy);
+		}
+		ft_putchar('\n');
 	}
+	if (ar->read == 2)
+		ft_alpha(ar, c);
 	return (1);
 }
 

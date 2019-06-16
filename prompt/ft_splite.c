@@ -1,8 +1,8 @@
-#include <stdlib.h>
+#include "ft_21.h"
 
 int		is(char c)
 {
-	if (c == ' ' || c == '\n' || c == '\t')
+	if (c == '\n')
 		return (1);
 	return (0);
 }

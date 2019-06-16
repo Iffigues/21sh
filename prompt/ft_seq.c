@@ -38,11 +38,17 @@ int ft_left(t_prompt *ar, unsigned long c)
 
 int ft_right(t_prompt *ar, unsigned long c)
 {
-
-	if (ar->i && c)
+	size_t r;
+	if (c)
 		;
-	if (ar->oui < ft_strlen(ar->com))
+	if (ar->com)
+		r = ft_strlen(ar->com);
+	else
+		r = 0;
+	if (ar->oui < r)
+	{
 		ar->oui++;
-	tputs(tgetstr("nd", NULL), 1, ft_charz);
+		tputs(tgetstr("nd", NULL), 1, ft_charz);
+	}
 	return (1);
 }
