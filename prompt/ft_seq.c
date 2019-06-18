@@ -30,17 +30,24 @@ int ft_left(t_prompt *ar, unsigned long c)
 {
 	if (ar->i && c)
 		;
+	get_size(ar);
 	if (ar->oui)
-		ar->oui--;
-	tputs(tgetstr("le", NULL), 1, ft_charz);
+                ar->oui--;
+	if (ar->oui && ar->com[ar->oui] == 10)
+		tputs(tgetstr("up", NULL), 1, ft_charz);
+	else
+		tputs(tgetstr("le", NULL), 1, ft_charz);
 	return (1);
 }
 
 int ft_right(t_prompt *ar, unsigned long c)
 {
 	size_t r;
-	if (c)
-		;
+	int t;
+
+	get_size(ar);
+	if (c) 
+	;
 	if (ar->com)
 		r = ft_strlen(ar->com);
 	else
@@ -48,7 +55,11 @@ int ft_right(t_prompt *ar, unsigned long c)
 	if (ar->oui < r)
 	{
 		ar->oui++;
-		tputs(tgetstr("nd", NULL), 1, ft_charz);
+		t = ar->oui % ar->w.ws_col;
+		if ((ar->oui && t == 0) || ar->com[ar->oui -1]  == 10)
+			ft_charz(10);
+		else
+			tputs(tgetstr("nd", NULL), 1, ft_charz);
 	}
 	return (1);
 }

@@ -29,6 +29,7 @@ int ft_enter(t_prompt *ar, char c)
 	{
 		if(ar->com) 
 		{	
+			ft_putstr(ar->com);
 			cpy = ft_strdup(ar->com);
 			reset();
 			free(cpy);
@@ -36,7 +37,7 @@ int ft_enter(t_prompt *ar, char c)
 		ft_putchar('\n');
 	}
 	if (ar->read == 2)
-		ft_alpha(ar, c);
+		ft_alpha(ar, 10);
 	return (1);
 }
 

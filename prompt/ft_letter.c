@@ -91,14 +91,14 @@ void aff(t_prompt *ac, char **c)
 	size_t cc;	
 	if (c)	
 		;
-	ac->oui++;
 	cc = ac->oui - 1;
 	i = ft_strlen(ac->com);
-	if (ac->com &&i)
-	while (cc < i) 
-		ft_putchar(ac->com[cc++]);
-	while (--cc > ac->oui - 1)
+	if (ac->com && i)
+	while (++cc < i) 
+		ft_putchar(ac->com[cc]);
+	while (--cc > ac->oui)
 		tputs(tgetstr("le", NULL), 1, ft_charz);
+	ac->oui++;
 }
 
 void	ft_alpha(t_prompt *ac, char c)

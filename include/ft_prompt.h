@@ -70,7 +70,7 @@ typedef struct s_action
 	int			(*ptf)(t_prompt *ar, char c);
 }				t_action;
 
-
+int	get_size(t_prompt *b);
 char	**ft_split(char *c);
 int	ft_charz(int a);
 void ft_add(t_prompt *ar, char c);

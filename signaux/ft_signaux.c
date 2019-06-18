@@ -28,7 +28,7 @@ void reset()
 }
 
 static void	sig_handler(int signo)
-{
+{	
 	ft_putnbr(signo);
 	if (signo == SIGINT)
 	{
