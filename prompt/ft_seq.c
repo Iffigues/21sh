@@ -26,6 +26,40 @@ int ft_down(t_prompt *ar, unsigned long c)
 	return (1);
 }
 
+void mv(char *b)
+{
+	int i;
+
+	i = 0;
+	while(b[i++])
+		tputs(tgetstr("nd", NULL), 1, ft_charz);
+}
+
+void mv_cursor(t_prompt *ar)
+{
+	char **b;
+	size_t i;
+	int c;	
+	int g;
+
+	g = 0;
+	c = 0;
+	i = 0;
+	b = ft_split(ar->com);
+	while (b[c])
+	{
+		g = 0;
+		while (b[c][g++])
+			i++;
+		if (i >= ar->oui)
+		{
+			mv(b[c]);
+			return ;
+		}
+		c++;
+	}
+}
+
 int ft_left(t_prompt *ar, unsigned long c)
 {
 	if (ar->i && c)
@@ -34,7 +68,10 @@ int ft_left(t_prompt *ar, unsigned long c)
 	if (ar->oui)
                 ar->oui--;
 	if (ar->oui && ar->com[ar->oui] == 10)
+	{
 		tputs(tgetstr("up", NULL), 1, ft_charz);
+		mv_cursor(ar);
+	}
 	else
 		tputs(tgetstr("le", NULL), 1, ft_charz);
 	return (1);
