@@ -93,10 +93,10 @@ int ft_right(t_prompt *ar, unsigned long c)
 	{
 		ar->oui++;
 		t = ar->oui % ar->w.ws_col;
-		if ((ar->oui && t == 0) || ar->com[ar->oui -1]  == 10)
+		/*if ((ar->oui && t == 0) || ar->com[ar->oui -1]  == 10)
 			ft_charz(10);
-		else
-			tputs(tgetstr("nd", NULL), 1, ft_charz);
+		else*/
+			ft_putchar(ar->com[ar->oui - 1]);//tputs(tgetstr("nd", NULL), 1, ft_charz);
 	}
 	return (1);
 }
