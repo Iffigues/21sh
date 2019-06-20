@@ -37,12 +37,13 @@
 # define NOT		77194440301339
 # define NIT		79393463556891
 # define CEND		-5
-
 # define kl			"kl"
 
-typedef struct s_esc
+typedef struct s_char
 {
-}				t_esc;
+	unsigned long i;
+	int	y;
+}	t_char;
 
 typedef struct	s_prompt
 {
