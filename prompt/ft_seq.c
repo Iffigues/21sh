@@ -26,38 +26,25 @@ int ft_down(t_prompt *ar, unsigned long c)
 	return (1);
 }
 
-void mv(char *b)
+void mv(int c)
 {
 	int i;
-
 	i = 0;
-	while(b[i++])
+	while(i++ < c)
 		tputs(tgetstr("nd", NULL), 1, ft_charz);
 }
 
 void mv_cursor(t_prompt *ar)
 {
-	char **b;
 	size_t i;
 	int c;	
-	int g;
 
-	g = 0;
 	c = 0;
-	i = 0;
-	b = ft_split(ar->com);
-	while (b[c])
-	{
-		g = 0;
-		while (b[c][g++])
-			i++;
-		if (i >= ar->oui)
-		{
-			mv(b[c]);
-			return ;
-		}
+	i = ar->oui - 1;
+	while (i && ar->com[i--] != '\n')
 		c++;
-	}
+	if (c)
+		mv(c % ar->w.ws_col);
 }
 
 int ft_left(t_prompt *ar, unsigned long c)
@@ -93,10 +80,7 @@ int ft_right(t_prompt *ar, unsigned long c)
 	{
 		ar->oui++;
 		t = ar->oui % ar->w.ws_col;
-		/*if ((ar->oui && t == 0) || ar->com[ar->oui -1]  == 10)
-			ft_charz(10);
-		else*/
-			ft_putchar(ar->com[ar->oui - 1]);//tputs(tgetstr("nd", NULL), 1, ft_charz);
+		ft_putchar(ar->com[ar->oui - 1]);
 	}
 	return (1);
 }
