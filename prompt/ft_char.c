@@ -12,16 +12,16 @@
 
 #include "../include/ft_21.h"
 
-int ft_ctrld(t_prompt *ar, char c)
+int ft_ctrld(t_prompt *ar, unsigned long c)
 {
-	if ((ar->com  == NULL || ft_strlen(ar->com) == 0) &&  c)
+	if ((ar->com  == NULL || ft_ullen(ar->com) == 0) &&  c)
 		exit(0);
 	return (1);
 }
 
-int ft_enter(t_prompt *ar, char c)
+int ft_enter(t_prompt *ar, unsigned long c)
 {
-	char *cpy;
+	unsigned long *cpy;
 
 	if (ar->i && c)
 		;
@@ -29,8 +29,7 @@ int ft_enter(t_prompt *ar, char c)
 	{
 		if(ar->com) 
 		{	
-			ft_putstr(ar->com);
-			cpy = ft_strdup(ar->com);
+			cpy = ft_uldup(ar->com);
 			reset();
 			free(cpy);
 		}
@@ -41,13 +40,13 @@ int ft_enter(t_prompt *ar, char c)
 	return (1);
 }
 
-int ft_del(t_prompt *ar, char c)
+int ft_del(t_prompt *ar, unsigned long c)
 {
 	if (ar->i && c)
 		;
 	return (1);
 }
-int ft_tab(t_prompt *ar, char c)
+int ft_tab(t_prompt *ar, unsigned long c)
 {
 	if (ar->i && c)
 		;

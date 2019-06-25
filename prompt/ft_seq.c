@@ -73,14 +73,14 @@ int ft_right(t_prompt *ar, unsigned long c)
 	if (c) 
 	;
 	if (ar->com)
-		r = ft_strlen(ar->com);
+		r = ft_ullen(ar->com);
 	else
 		r = 0;
 	if (ar->oui < r)
 	{
 		ar->oui++;
 		t = ar->oui % ar->w.ws_col;
-		ft_putchar(ar->com[ar->oui - 1]);
+		ulwrite(ar->com[ar->oui - 1]);
 	}
 	return (1);
 }

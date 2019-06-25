@@ -19,7 +19,7 @@ static int	ft_not(t_prompt *a, unsigned long c)
 	return (1);
 }
 
-static int ft_starter(t_prompt *ar, char c)
+static int ft_starter(t_prompt *ar, unsigned long c)
 {
 	int  i;
 	t_action b[4] = {
@@ -62,7 +62,9 @@ int	ft_seqence(t_prompt *ar, unsigned long  c)
 	return (0);
 }
 
-void ft_action(t_prompt *ar, char c)
+#include <stdio.h>
+	
+void ft_action(t_prompt *ar, unsigned long c)
 {
 	if (ft_starter(ar, c))
 		;

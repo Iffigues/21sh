@@ -12,11 +12,11 @@
 
 #include "../include/ft_21.h"
 
-char	*make_cursor()
+unsigned long *make_cursor()
 {
-	char *c;
+	unsigned long  *c;
 
-	if (!(c = (char *)malloc(sizeof(char) * (61))))
+	if (!(c = (unsigned long *)malloc(sizeof(char) * (61))))
 		return (NULL);
 	*c = '\0';
 	return (c);
@@ -58,6 +58,7 @@ static int 	ft_getchar(t_prompt *ar)
 	return (0);
 }
 
+#include <stdio.h>
 void	ft_prompt(t_prompt *ar)
 {
 	while ((ar->read = read(1, ar->c, 2)))

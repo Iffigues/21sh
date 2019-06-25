@@ -40,7 +40,7 @@ $(NAME):
 		@make -C libft/
 		@echo "${MAGENTA}LIBRARY COMPILED ✓${END}"
 		@$(CC)  $(INCLUDE) $(SRCS) $(EE) $(PROMPTS) $(INITS) $(SIGNS) $(STATICS)
-		@$(GO) $(NAME) -L libft/  -lft  -ltermcap $(OBJ_SRC) $(OBJ_PT) $(OBJ_IN) $(OBJ_SIG) $(OBJ_STA) $(OBJ_ENV) 
+		@$(GO) $(NAME) -L libft/  -lft  -ltermcap -fsanitize=address $(OBJ_SRC) $(OBJ_PT) $(OBJ_IN) $(OBJ_SIG) $(OBJ_STA) $(OBJ_ENV) 
 		@echo "${PINK}21SH IS READY ✓${END}"	
 		@mkdir -p ./objs && mv $(OBJ_SRC) $(OBJ_PT) $(OBJ_IN) $(OBJ_SIG) $(OBJ_STA) $(OBJ_ENV) ./objs
 

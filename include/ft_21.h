@@ -20,6 +20,7 @@
 # include "ft_jb.h"
 # include <termios.h>
 # include <term.h>
+# include <stdio.h>
 
 typedef struct	s_data
 {

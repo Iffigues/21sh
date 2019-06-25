@@ -56,7 +56,7 @@ typedef struct	s_prompt
 	size_t      	oui;
 	size_t 		size;
 	struct winsize	w;
-	char		*com;
+	unsigned long		*com;
 }				t_prompt;
 
 typedef struct s_seq
@@ -67,23 +67,23 @@ typedef struct s_seq
 
 typedef struct s_action
 {
-	int			d;
-	int			(*ptf)(t_prompt *ar, char c);
+	unsigned long		d;
+	int			(*ptf)(t_prompt *ar, unsigned long c);
 }				t_action;
 
 int	get_size(t_prompt *b);
 char	**ft_split(char *c);
 int	ft_charz(int a);
-void ft_add(t_prompt *ar, char c);
-int	ft_escape(t_prompt *ar, char c);
-int ft_letter(t_prompt *ar, char c);
+void ft_add(t_prompt *ar, unsigned long c);
+int	ft_escape(t_prompt *ar, unsigned long c);
+int ft_letter(t_prompt *ar, unsigned long c);
 void    ft_prompt(t_prompt *ar);
 void    clean(t_prompt *v, int a);
-void ft_action(t_prompt *ar, char c);
+void ft_action(t_prompt *ar, unsigned long c);
 int ft_seqence(t_prompt *ar, unsigned long  c);
-int ft_ctrld(t_prompt *ar, char c);
-int ft_enter(t_prompt *ar, char c);
-int ft_del(t_prompt *ar, char c);
+int ft_ctrld(t_prompt *ar, unsigned long c);
+int ft_enter(t_prompt *ar, unsigned long c);
+int ft_del(t_prompt *ar, unsigned long c);
 int ft_dd(t_prompt *ar, unsigned long c);
 int ft_home(t_prompt *ar, unsigned long c);
 int ft_end(t_prompt *ar, unsigned long c);
@@ -93,9 +93,12 @@ int ft_up(t_prompt *ar, unsigned long c);
 int ft_down(t_prompt *ar, unsigned long c);
 int ft_left(t_prompt *ar, unsigned long c);
 int ft_right(t_prompt *ar, unsigned long c);
-char	*make_cursor();
-void    ft_alpha(t_prompt *ac, char c);
-int    ft_tab(t_prompt *ac, char c);
+unsigned long	*make_cursor();
+void    ft_alpha(t_prompt *ac, unsigned long c);
+int    ft_tab(t_prompt *ac, unsigned long c);
 void init_prompt(t_prompt *ar);
+size_t ft_ullen(unsigned long *t);
+unsigned long *ft_uldup(const unsigned long *r);
+void    ulwrite(unsigned long c);
 
 #endif

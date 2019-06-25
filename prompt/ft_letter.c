@@ -12,13 +12,13 @@
 
 #include "../include/ft_21.h"
 
-static char	*remalloc(char *c, size_t y)
+static unsigned long	*remalloc(unsigned long *c, size_t y)
 {
-	char *t;
+	unsigned long *t;
 	size_t u;
 
 	u = 0;
-	if (!(t = (char *)malloc(sizeof(char) * (y + 61))))
+	if (!(t = (unsigned long *)malloc(sizeof(unsigned long) * (y + 61))))
 		return (NULL);
 	while (u < y)
 	{
@@ -30,15 +30,15 @@ static char	*remalloc(char *c, size_t y)
 	return (t);
 }
 
-static char *add_begin(char *a, char c)
+static unsigned long *add_begin(unsigned long *a, unsigned long c)
 {
-	char *r;
+	unsigned long *r;
 	size_t u;
 	size_t y;
 
 	u = 0;
 	y = 0;
-	r = ft_strdup(a);
+	r = ft_uldup(a);
 	a[y++] = c;
 	while (r[u])
 		a[y++] = r[u++];
@@ -49,7 +49,7 @@ static char *add_begin(char *a, char c)
 	return (a);
 }
 
-static  char * add_alpha(char *ac, char c)
+static  unsigned long * add_alpha(unsigned long *ac, unsigned long c)
 {
 	size_t y;
 
@@ -64,9 +64,9 @@ static  char * add_alpha(char *ac, char c)
 	return (ac);
 }
 
-static char  *add_middle(char *ac, char t, size_t c)
+static unsigned long   *add_middle(unsigned long *ac, unsigned long t, size_t c)
 {
-	char *r;
+	unsigned  long *r;
 	size_t y;
 	size_t u;
 
@@ -74,7 +74,7 @@ static char  *add_middle(char *ac, char t, size_t c)
 	y = 0;
 	while (c--)
 		y++;
-	r = ft_strdup(&ac[y]);
+	r = ft_uldup(&ac[y]);
 	ac[y++] = t;
 	while (r[u])
 		ac[y++] = r[u++];
@@ -85,34 +85,35 @@ static char  *add_middle(char *ac, char t, size_t c)
 	return (ac);
 }
 
-void aff(t_prompt *ac, char **c) 
+void aff(t_prompt *ac) 
 {
 	size_t i;
 	size_t cc;	
-	if (c)	
-		;
+
 	cc = ac->oui - 1;
-	i = ft_strlen(ac->com);
+	i = ft_ullen(ac->com);
 	if (ac->com && i)
-	while (++cc < i) 
-		ft_putchar(ac->com[cc]);
+		while (++cc < i) 
+			ulwrite(ac->com[cc]);
 	while (--cc > ac->oui)
 		tputs(tgetstr("le", NULL), 1, ft_charz);
 	ac->oui++;
 }
 
-void	ft_alpha(t_prompt *ac, char c)
+#include <stdio.h>
+
+void	ft_alpha(t_prompt *ac, unsigned long c)
 {
 	size_t y;
-
+	
 	if (ac->com == NULL)
 		ac->com = make_cursor();
-	y = ft_strlen(ac->com);
+	y = ft_ullen(ac->com);
 	if (y == ac->oui)
 		ac->com = add_alpha(ac->com, c);
 	else if (ac->oui == 0)
 		ac->com = add_begin(ac->com, c);
 	else
 		ac->com = add_middle(ac->com, c, ac->oui);
-	aff(ac, ft_split(ac->com));
+	aff(ac);
 }

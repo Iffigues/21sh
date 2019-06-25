@@ -51,7 +51,7 @@ static int notseq(t_prompt *a)
 }
 
 
-static int	is_in_escape(t_prompt *a, char c)
+static int	is_in_escape(t_prompt *a, unsigned long c)
 {	
 	unsigned long num;
 
@@ -67,12 +67,12 @@ static int	is_in_escape(t_prompt *a, char c)
 	return (1);
 }
 
-int	ft_escape(t_prompt *ar, char c)
+int	ft_escape(t_prompt *ar, unsigned long c)
 {
 	return (is_in_escape(ar, c));
 }
 
-void	ft_add(t_prompt *ar, char c)
+void	ft_add(t_prompt *ar, unsigned long c)
 {
 	ar->p[ar->y++] = c;
 	ar->p[ar->y] = '\0';
@@ -83,7 +83,7 @@ void	ft_add(t_prompt *ar, char c)
 	}
 }
 
-int ft_letter(t_prompt *ar, char c)
+int ft_letter(t_prompt *ar, unsigned long c)
 {
 	if (c == 27 )
 	{
