@@ -6,7 +6,7 @@
 /*   By: bordenoy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 12:12:36 by bordenoy          #+#    #+#             */
-/*   Updated: 2019/05/13 13:16:56 by bordenoy         ###   ########.fr       */
+/*   Updated: 2019/06/26 23:04:27 by bordenoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ void init_prompt(t_prompt *ar);
 size_t ft_ullen(unsigned long *t);
 unsigned long *ft_uldup(const unsigned long *r);
 void    ulwrite(unsigned long c);
+void aff(t_prompt *ac);
 
 #endif

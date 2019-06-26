@@ -6,7 +6,7 @@
 /*   By: bordenoy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 12:49:04 by bordenoy          #+#    #+#             */
-/*   Updated: 2019/05/13 18:17:03 by bordenoy         ###   ########.fr       */
+/*   Updated: 2019/06/26 22:46:37 by bordenoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int ft_starter(t_prompt *ar, unsigned long c)
 	t_action b[4] = {
 		{CTRLD, ft_ctrld},
 		{ENTER, ft_enter},
-		{DEL, ft_del},
+		{DEL, ft_dd},
 		{TAB, ft_tab}
 	};
 
