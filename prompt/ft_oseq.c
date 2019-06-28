@@ -25,7 +25,7 @@ int ft_dd(t_prompt *ar, unsigned long c)
 		while (ar->com[i])
 			ar->com[i++] = ar->com[cc++];
 		ar->oui--;
-		aff(ar);
+		ft_left(ar,0);
 		ar->oui++;
 	}
 	return (1);
